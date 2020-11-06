@@ -44,11 +44,11 @@ router.post('/create', (req, res, next) => {
     
     // console.log("databaseDate: " + typeof newReminder.date);
     var databaseDate = newReminder.date
-    console.log(databaseDate);
+
     databaseDate = JSON.stringify(databaseDate);
-    console.log(databaseDate);
+
     var databaseDateSplit = databaseDate.split("T");
-    console.log(databaseDateSplit)
+    
     var d = new Date(databaseDateSplit[0] + " 00:00:00 EST");
     var dYear = d.getFullYear()
     var dMonth = d.getMonth()
@@ -57,7 +57,7 @@ router.post('/create', (req, res, next) => {
     var hourArray = hourTime.split(":");
     var date = new Date(dYear, dMonth, dDay, hourArray[0], hourArray[1], 0,);
     var j = schedule.scheduleJob('testname', date, 'US/Eastern', function(){
-      console.log(date);
+
       client.calls
           .create({
             //  url: 'Wuba dubb ah dubb dubb! ...What is my purpose?... You pass butter... Oh my god...',
