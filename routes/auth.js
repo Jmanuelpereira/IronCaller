@@ -62,7 +62,7 @@ router.post("/signup", (req, res, next) => {
             });
             return;
         }
-
+        //TESTING GIT
         // if all of the checks have passed we encrypt the password and create a new user
         const salt = bcrypt.genSaltSync(bcryptSalt);
         const hashPass = bcrypt.hashSync(password, salt);
