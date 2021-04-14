@@ -1,4 +1,4 @@
-//https://www.twilio.com/pricing
+
 
 require('dotenv').config();
 
@@ -7,7 +7,8 @@ const cookieParser = require('cookie-parser');
 const express      = require('express');
 const favicon      = require('serve-favicon');
 const hbs          = require('hbs');
-const mongoose     = require('mongoose');
+const mongoose = require('mongoose');
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/Project2';
 const logger       = require('morgan');
 const path         = require('path');
 const session = require("express-session");
@@ -22,12 +23,15 @@ const VoiceResponse = require('twilio').twiml.VoiceResponse;
 const schedule = require('node-schedule-tz');
 
 mongoose
-  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
-  .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+  .connect(MONGODB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
   })
-  .catch(err => {
-    console.error('Error connecting to mongo', err)
+  .then(() => console.log(`Successfully connected to the database ${MONGODB_URI}`))
+  .catch(error => {
+    console.error(`An error ocurred trying to connect to the database ${MONGODB_URI}: `, error);
+    process.exit(1);
   });
 
 const app_name = require('./package.json').name;
@@ -95,7 +99,7 @@ app.use('/', require('./routes/index'));
 app.use("/auth", require("./routes/auth"));
 app.use("/tasks", require("./routes/task-routes/task"));
 app.use("/users", require("./routes/user-routes/user"));
-app.use("/comments", require("./routes/comments-routes/comments"));
+app.use("/leads", require("./routes/comments-routes/comments"));
 
 
 

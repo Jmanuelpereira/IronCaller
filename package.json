@@ -1,5 +1,5 @@
 {
-  "name": "ironCaller",
+  "name": "ironcaller",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -14,7 +14,7 @@
     "cloudinary": "^1.19.0",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.3",
-    "dotenv": "^6.0.0",
+    "dotenv": "^6.2.0",
     "express": "^4.16.3",
     "express-session": "^1.17.0",
     "hbs": "^4.0.1",
@@ -29,5 +29,17 @@
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
-  }
+  },
+  "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jmanuelpereira/IronCaller.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jmanuelpereira/IronCaller/issues"
+  },
+  "homepage": "https://github.com/Jmanuelpereira/IronCaller#readme",
+  "description": ""
 }
